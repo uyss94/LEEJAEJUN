@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리자이준 | FA설계</title>
+<meta name="description" content="재료비를 아끼는 FA설계자 리자이준의 개인 랜딩페이지">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg-alt:#f5f6fb; --text:#1b1d2a; --muted:#5d6177;
+  --card:#ffffff; --border:#e3e5f0; --main:#4F46E5; --main-soft:#eceafd;
+  --shadow:0 8px 24px rgba(30,30,80,.08);
+}
+:root[data-theme="dark"]{
+  --bg:#0f1117; --bg-alt:#161925; --text:#eceef7; --muted:#9a9fb8;
+  --card:#1c2030; --border:#2a2f45; --main:#818cf8; --main-soft:#25284a;
+  --shadow:0 8px 24px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Noto Sans KR',Pretendard,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--main);outline-offset:3px;border-radius:6px}
+.container{max-width:1000px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+section:nth-of-type(even){background:var(--bg-alt)}
+h2{font-size:2rem;font-weight:900;margin-bottom:40px}
+h2::after{content:"";display:block;width:48px;height:4px;background:var(--main);border-radius:2px;margin-top:10px}
+
+/* nav */
+header{position:fixed;inset:0 0 auto 0;z-index:100;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:1.15rem;color:var(--main)}
+.menu{display:flex;gap:6px;list-style:none;align-items:center}
+.menu a{padding:8px 14px;border-radius:8px;font-weight:500;color:var(--muted);transition:.2s}
+.menu a:hover,.menu a.active{color:var(--main);background:var(--main-soft)}
+.icon-btn{background:none;border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:1.1rem}
+.icon-btn:hover{background:var(--main-soft)}
+.nav-right{display:flex;gap:8px;align-items:center}
+.burger{display:none}
+
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:96px;background:radial-gradient(circle at 80% 20%,var(--main-soft),transparent 55%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+.hello{color:var(--main);font-weight:700;margin-bottom:8px}
+h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.2}
+.typing{font-size:clamp(1.2rem,3vw,1.6rem);color:var(--muted);margin:16px 0 32px;min-height:2.2em}
+.typing::after{content:"|";margin-left:2px;animation:blink 1s steps(1) infinite;color:var(--main)}
+@keyframes blink{50%{opacity:0}}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 28px;border-radius:12px;font-weight:700;border:2px solid var(--main);transition:.2s}
+.btn.primary{background:var(--main);color:#fff}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn.ghost{color:var(--main)}
+.btn.ghost:hover{background:var(--main-soft)}
+.avatar{width:min(280px,70vw);aspect-ratio:1;border-radius:50%;margin:0 auto;display:grid;place-items:center;font-size:6rem;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--main),#a78bfa);box-shadow:var(--shadow)}
+
+.avatar.photo{display:block;object-fit:contain;background:#fff;padding:14px;border:4px solid var(--main)}
+/* about / skills */
+.about p{font-size:1.2rem;max-width:640px}
+.tags{display:flex;flex-wrap:wrap;gap:12px}
+.tag{padding:10px 22px;border-radius:999px;background:var(--main-soft);color:var(--main);font-weight:700;border:1px solid var(--border)}
+.bars{margin-top:32px;display:grid;gap:18px;max-width:560px}
+.bar-label{display:flex;justify-content:space-between;font-weight:500;margin-bottom:6px}
+.bar{height:10px;background:var(--border);border-radius:5px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:var(--main);border-radius:5px;transition:width 1.2s ease}
+
+/* timeline */
+.timeline{border-left:3px solid var(--main);padding-left:28px;display:grid;gap:28px}
+.t-item{position:relative}
+.t-item::before{content:"";position:absolute;left:-38px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--main);border:3px solid var(--bg-alt)}
+.t-item time{color:var(--main);font-weight:700;font-size:.9rem}
+.t-item h3{font-size:1.2rem}
+.t-item p{color:var(--muted)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:var(--shadow);transition:.25s;display:block}
+.card:hover,.card:focus-visible{transform:translateY(-6px);border-color:var(--main)}
+.card .emoji{font-size:2.2rem}
+.card h3{margin:10px 0 6px}
+.card p{color:var(--muted)}
+
+/* contact */
+.contact-list{list-style:none;display:grid;gap:14px;max-width:480px}
+.contact-list a{display:flex;gap:14px;align-items:center;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;transition:.2s}
+.contact-list a:hover{border-color:var(--main);transform:translateX(6px)}
+.contact-list strong{min-width:72px;color:var(--main)}
+footer{text-align:center;padding:32px 24px;color:var(--muted);border-top:1px solid var(--border);font-size:.9rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:768px){
+  .burger{display:inline-block}
+  .menu{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--border);padding:12px;display:none}
+  .menu.open{display:flex}
+  .menu a{display:block;width:100%;text-align:center}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .cta{justify-content:center}
+  .avatar{order:-1;font-size:4rem;width:180px}
+  section{padding:72px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="container" aria-label="주요 메뉴">
+    <a href="#hero" class="logo">리자이준</a>
+    <ul class="menu" id="menu">
+      <li><a href="#about">소개</a></li>
+      <li><a href="#skills">스킬</a></li>
+      <li><a href="#career">경력</a></li>
+      <li><a href="#projects">프로젝트</a></li>
+      <li><a href="#contact">연락처</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" aria-label="다크모드 전환">🌙</button>
+      <button class="icon-btn burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="menu">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="hello">안녕하세요 👋</p>
+        <h1>리자이준</h1> <!-- 여기 수정: 이름 -->
+        <p class="typing" id="typing" data-text="FA설계 · 재료비를 아끼는 설계자"></p> <!-- 여기 수정: 타이핑 문구 -->
+        <div class="cta">
+          <a href="#projects" class="btn primary">프로젝트 보기</a>
+          <a href="#contact" class="btn ghost">연락하기</a>
+        </div>
+      </div>
+      <!-- 여기 수정: 사진이 있으면 <img src="사진경로" alt="리자이준 프로필 사진" class="avatar"> 로 교체 -->
+      <img src="profile.jpg" alt="리자이준 프로필 사진" class="avatar photo">
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container reveal about">
+      <h2>소개</h2>
+      <!-- 여기 수정: 자기소개 -->
+      <p>FA(공장자동화) 설계를 하는 설계자 <strong>리자이준</strong>입니다.<br>
+      성능은 지키면서 재료비는 아끼는 설계를 좋아합니다. 불필요한 부품 하나까지 다시 들여다보는 것이 제 방식입니다.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container reveal">
+      <h2>스킬</h2>
+      <!-- 여기 수정: 스킬 목록 -->
+      <div class="tags">
+        <span class="tag">💥 몸통박치기</span>
+        <span class="tag">🔥 불꽃세례</span>
+      </div>
+      <div class="bars">
+        <div><div class="bar-label"><span>몸통박치기</span><span>90%</span></div><div class="bar"><span data-w="90"></span></div></div>
+        <div><div class="bar-label"><span>불꽃세례</span><span>85%</span></div><div class="bar"><span data-w="85"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="container reveal">
+      <h2>경력 / 학력</h2>
+      <div class="timeline">
+        <!-- 여기 수정: 경력/학력 항목 -->
+        <div class="t-item">
+          <time>학력</time>
+          <h3>하버드대학교</h3>
+          <p>양념치킨학과</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container reveal">
+      <h2>프로젝트</h2>
+      <div class="grid">
+        <!-- 여기 수정: 프로젝트 카드 (링크는 href에) -->
+        <a href="#" class="card">
+          <div class="emoji">🚗</div>
+          <h3>인지테슬라</h3>
+          <p>재료비를 아끼는 설계 철학을 담은 프로젝트입니다.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container reveal">
+      <h2>연락처</h2>
+      <ul class="contact-list">
+        <!-- 여기 수정: 연락처 -->
+        <li><a href="mailto:4444@4444.COM"><strong>이메일</strong> 4444@4444.COM</a></li>
+        <li><a href="#"><strong>GitHub</strong> 4444@4444.COM</a></li>
+        <li><a href="#"><strong>SNS</strong> 4444@4444.COM</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> 리자이준. All rights reserved.</footer> <!-- 여기 수정: 저작권 문구 -->
+
+<script>
+// 테마
+const root=document.documentElement, themeBtn=document.getElementById('themeBtn');
+function setTheme(t){root.dataset.theme=t;themeBtn.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('theme',t)}catch(e){}}
+let saved=null;try{saved=localStorage.getItem('theme')}catch(e){}
+setTheme(saved||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+themeBtn.onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
+
+// 햄버거
+const menu=document.getElementById('menu'), burger=document.getElementById('burger');
+burger.onclick=()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)};
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false)}));
+
+// 스크롤 등장 + 스킬바
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('show');
+    e.target.querySelectorAll('.bar span').forEach(b=>b.style.width=b.dataset.w+'%');io.unobserve(e.target)}
+}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// 현재 섹션 강조
+const links=[...menu.querySelectorAll('a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
+
+// 타이핑
+const t=document.getElementById('typing'),txt=t.dataset.text;let i=0;
+(function type(){t.textContent=txt.slice(0,i++);if(i<=txt.length)setTimeout(type,90)})();
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
